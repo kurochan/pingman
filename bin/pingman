@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'pingman'
+Signal.trap(:INT){
+  exit 0
+}
 Pingman.pingman
