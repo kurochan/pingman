@@ -12,7 +12,7 @@ lines = []
 config.each do |k, v|
   line = Line.new
   line.hostname = v['host'] || k
-  line.address = k['address']
+  line.address = v['address']
   line.row = lines.size
   lines.push line
 end
