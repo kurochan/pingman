@@ -1,46 +1,14 @@
-require "pingman/version"
-
-require "pingman/line"
-require "pingman/screen"
-require "pingman/pinger"
+require 'pingman/version'
+require 'pingman/line'
+require 'pingman/screen'
+require 'pingman/pinger'
+require 'yaml'
 
 module Pingman
-  def self.pingman
+  def self.pingman(lines)
     pinger = Pinger.new
     screen = Screen.new
-
-    line = Line.new
-    line.hostname = 'local'
-    line.address = '127.0.0.1'
-    line.row = screen.lines.size
-    screen.lines.push line
-    line = Line.new
-    line.hostname = 'google dns'
-    line.address = '8.8.8.8'
-    line.row = screen.lines.size
-    screen.lines.push line
-    line = Line.new
-    line.hostname = 'not found'
-    line.address = '1.2.3.4'
-    line.row = screen.lines.size
-    screen.lines.push line
-    line = Line.new
-    line.hostname = 'google dns'
-    line.address = '8.8.4.4'
-    line.row = screen.lines.size
-    screen.lines.push line
-    line = Line.new
-    line.hostname = 'google.com'
-    line.row = screen.lines.size
-    screen.lines.push line
-    line = Line.new
-    line.hostname = 'yahoo.com'
-    line.row = screen.lines.size
-    screen.lines.push line
-    line = Line.new
-    line.hostname = 'microsoft.com'
-    line.row = screen.lines.size
-    screen.lines.push line
+    screen.lines = lines
 
     Thread.new do
       screen.update

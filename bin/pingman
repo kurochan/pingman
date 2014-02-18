@@ -1,7 +1,20 @@
 #!/usr/bin/env ruby
 
 require 'pingman'
+require 'yaml'
 Signal.trap(:INT){
   exit 0
 }
-Pingman.pingman
+
+config = ARGV.size > 0 ? YAML.load_file(File.expand_path(ARGV[0])) :
+  YAML.load_file(File.expand_path('../../lib/sample.yml', __FILE__))
+lines = []
+config.each do |k, v|
+  line = Line.new
+  line.hostname = v['host'] || k
+  line.address = k['address']
+  line.row = lines.size
+  lines.push
+end
+
+Pingman.pingman lines
