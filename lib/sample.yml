@@ -1,9 +1,9 @@
 localhost:
   host: localhost
-  ip: 127.0.0.1
+  address: 127.0.0.1
 google:
   host: google.com
 google-dns1:
-  ip: 8.8.8.8
+  address: 8.8.8.8
 google-dns2:
-  ip: 8.8.4.4
+  address: 8.8.4.4
