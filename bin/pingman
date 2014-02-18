@@ -14,7 +14,7 @@ config.each do |k, v|
   line.hostname = v['host'] || k
   line.address = k['address']
   line.row = lines.size
-  lines.push
+  lines.push line
 end
 
 Pingman.pingman lines
